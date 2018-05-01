@@ -1,0 +1,28 @@
+{
+  "name": "simple-todos",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
+    "cheerio": "^1.0.0-rc.2",
+    "materialize-css": "^0.100.2",
+    "meteor-node-stubs": "^0.3.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }
+  }
+}
