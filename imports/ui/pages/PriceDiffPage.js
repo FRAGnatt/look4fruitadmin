@@ -3,7 +3,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 import TableFruitBaseOrder from '../TableFruitBaseOrder.js';
 import RefreshPrice from '../../api/RefreshPrice.js';
-import { FoodRobotDB } from '../../api/collections/FoodRobotDB.js';
+import FoodRobot from '../../api/FoodRobot.js'
+
+import { FoodRobotDB } from '../../../lib/collections/FoodRobotDB.js';
 
 
 
@@ -24,11 +26,13 @@ class PriceDiffPage extends Component {
                     <div className="s12">
                         <ul className="tabs">
                             <li className="tab col s3"><a className="active" href="#test1">Цены FoodRobot</a></li>
+                            <li className="tab col s3"><a href="#test1">Цены Перекресток</a></li>
                             <li className="tab col s3 disabled"><a href="#test4">Объедененные цены</a></li>
                         </ul>
                     </div>
                 </div>
                 <a className="waves-effect waves-light btn" onClick={this.updatePrice}>Обновить цены</a>
+
                 <TableFruitBaseOrder items={this.props.foodRobotPrice} />
             </div>
         )
@@ -38,6 +42,6 @@ class PriceDiffPage extends Component {
 
 export default withTracker(() => {
     return {
-        foodRobotPrice: FoodRobotDB.find({}).fetch()
+        foodRobotPrice: FoodRobot.getLastDump()
     };
 })(PriceDiffPage);

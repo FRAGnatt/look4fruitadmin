@@ -5,7 +5,6 @@ import './styles/TableFruitBaseOrder.less'
 export default class TableFruitBaseOrder extends Component {
     constructor(props) {
         super(props);
-        console.log("PPPPROP");
         this.state = {
             items: null
         };
