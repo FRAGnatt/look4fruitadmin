@@ -38,7 +38,7 @@ export default class PriceDiffPage extends Component {
                                 <NavLink to="/client/table/perekrestok" activeClassName="active">Цены Перекресток</NavLink>
                             </li>
                             <li className="tab col s3">
-                                <NavLink to="/client/table/merged" activeClassName="active">Цены Перекресток</NavLink>
+                                <NavLink to="/client/table/merged" activeClassName="active">Объединенные цены</NavLink>
                             </li>
                         </ul>
                     </div>

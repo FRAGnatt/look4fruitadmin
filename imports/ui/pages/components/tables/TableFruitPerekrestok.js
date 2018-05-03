@@ -19,7 +19,7 @@ class TableFruitPerekrestok extends Component {
                 <td>{item.title}</td>
                 <td>{item.price}</td>
                 <td>{item.service}</td>
-                <td><a href="{item.url}">{item.url}</a></td>
+                <td><a href={item.url}>{item.url}</a></td>
             </tr>
         ));
     }
