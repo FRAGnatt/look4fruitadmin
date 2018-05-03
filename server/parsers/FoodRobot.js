@@ -5,13 +5,10 @@ export default class FoodRobot {
         this.cheerio = require('cheerio');
     }
     parse() {
-
         let fruitPrice = [];
 
         let parser = (res, page, requester, resolve) => {
-            // console.log('test', this.cheerio);
             const $ = this.cheerio.load(res.content);
-
 
             let pageCount = $('.pagination li').length;
             $('.fr_catalog__item').each(function () {
@@ -24,14 +21,13 @@ export default class FoodRobot {
                 let price = regExpResult[0];
 
                 let url = 'https://foodrobot.ru' + $this.find('.fr_row-card__name a').attr('href');
-                fruitPrice.push({'title': title, 'price': price, 'url': url, 'service': 'FoodRobot'});
+                fruitPrice.push({'title': title, 'price': price, 'url': url, 'service': 'FoodRobot', 'inaccurate': false});
             });
 
             if (pageCount - 2 >= page + 1) {
                 requester(page + 1, resolve);
             } else {
-                console.log('ras-dva COMPLETE');
-                resolve(fruitPrice)
+                resolve(fruitPrice);
             }
         };
 
@@ -48,7 +44,6 @@ export default class FoodRobot {
         };
 
         let promiseFruit = new Promise((resolve, reject) => {
-            console.log('ras');
             requesterFruit(1, resolve);
         });
 
@@ -61,6 +56,6 @@ export default class FoodRobot {
         return Promise.all([promiseBerry,promiseFruit]).then((result) => {
             return fruitPrice;
         });
-        
+
     }
 }

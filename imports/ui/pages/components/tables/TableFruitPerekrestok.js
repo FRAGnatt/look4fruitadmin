@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 
-import './styles/TableFruitBaseOrder.less'
+import './TableFruitFoodRobot.less'
+import Perekrestok from '../../../../api/Perekrestok.js'
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class TableFruitBaseOrder extends Component {
+class TableFruitPerekrestok extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: null
+            itemsPrice: null
         };
     }
 
     renderItems () {
-        return this.props.items.map((item, i) => (
-            <tr key={i}>
+        return this.props.itemsPrice.map((item, i) => (
+            <tr key={i} className={item.inaccurate ? 'red lighten-4' : ''}>
                 <td>{item.title}</td>
                 <td>{item.title}</td>
                 <td>{item.price}</td>
                 <td>{item.service}</td>
-                <td>{item.url}</td>
+                <td><a href="{item.url}">{item.url}</a></td>
             </tr>
         ));
     }
     render() {
-
         return (
-
             <table>
                 <thead>
                     <tr>
@@ -42,3 +42,9 @@ export default class TableFruitBaseOrder extends Component {
         );
     }
 }
+
+export default withTracker(() => {
+    return {
+        itemsPrice: Perekrestok.getLastDump()
+    };
+})(TableFruitPerekrestok);

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 import { withTracker } from 'meteor/react-meteor-data';
 
+// todo what is best way ?
 import "../../node_modules/materialize-css/dist/css/materialize.min.css"
 
 import { Tasks } from '../api/tasks.js';
@@ -31,10 +33,12 @@ class App extends Component  {
 
     render() {
         return (
-            <div>
-                <HeaderBar />
-                <PriceDiffPage />
-            </div>
+            <Router>
+                <div>
+                    <HeaderBar />
+                    <PriceDiffPage />
+                </div>
+            </Router>
         );
     }
 }
