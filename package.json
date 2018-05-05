@@ -2,7 +2,7 @@
   "name": "simple-todos",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run --allow-superuser"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
